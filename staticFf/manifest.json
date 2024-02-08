@@ -1,0 +1,46 @@
+{
+    "name": "Notion Port",
+    "version": "0.0.1",
+    "description": "A tool that scrapes webpages and adds them to a Notion database.",
+    "manifest_version": 2,
+    "optional_permissions": [
+        "clipboardWrite",
+        "clipboardRead"
+    ],
+    "permissions": [
+        "contextMenus",
+        "activeTab",
+        "nativeMessaging",
+        "webRequest",
+        "*://api.notion.com/*"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "64": "icons/icons.png"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "contentScript.js"
+            ],
+            "all_frames": true,
+            "match_about_blank": true,
+            "run_at": "document_start"
+        }
+    ],
+    "options_ui": {
+        "open_in_tab": true,
+        "page": "options.html"
+    }
+}
