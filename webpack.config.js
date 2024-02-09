@@ -5,8 +5,8 @@ const webpack = require('webpack')
 const entry = {
   contentScript: "./src/contentScript/index.js",
   background: "./src/background/index.js",
-//   popup: "./src/popup/popup.tsx",
-//   options: "./src/options/options.tsx",
+  popup: "./src/popup/popup.js",
+//   options: "./src/options/options.js",
 //   faqs: "./src/faqs/faqs.tsx",
 //   ctx: "./src/contentScript/ctx.js"
 }
