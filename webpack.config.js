@@ -6,7 +6,7 @@ const entry = {
   contentScript: "./src/contentScript/index.js",
   background: "./src/background/index.js",
   popup: "./src/popup/popup.js",
-//   options: "./src/options/options.js",
+  options: "./src/options/options.js",
 //   faqs: "./src/faqs/faqs.tsx",
 //   ctx: "./src/contentScript/ctx.js"
 }
