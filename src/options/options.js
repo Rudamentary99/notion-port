@@ -5,9 +5,11 @@ import { createRoot } from 'react-dom/client';
 class OptionsPage extends React.Component {
   constructor(props) {
     super(props);
-    chrome.storage.local.get(['api_key', 'database_ids'], (result) => {
-      this.setState({ api_key: result.api_key || "", database_ids: result.database_ids || "" });
-    });
+    const portOptions = JSON.parse(localStorage.getItem('portOptions')) || {};
+    this.state = {
+      api_key: portOptions.api_key || "",
+      database_ids: portOptions.databaase_ids || ""
+    };
   }
   setOption(key, value) {
     // const obj = {};
@@ -16,7 +18,8 @@ class OptionsPage extends React.Component {
   }
 
   save() {
-    chrome.storage.local.set({ api_key: this.state.api_key, database_ids: this.state.database_ids });
+    localStorage.setItem('portOptions', JSON.stringify({ api_key: this.state.api_key, database_ids: this.state.database_ids }));
+    // storage.local.set({ api_key: this.state.api_key, database_ids: this.state.database_ids });
   }
 
   render() {
@@ -26,7 +29,6 @@ class OptionsPage extends React.Component {
         <div>
           <InputLabel htmlFor="api_key">API Key</InputLabel>
           <Input id="api_key" value={this.state.api_key} onChange={(event) => {
-            this.setOption('api_key', event.target.value);
           }} />
         </div>
         <div>
